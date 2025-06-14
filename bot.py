@@ -1,19 +1,18 @@
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
-import os
-from dotenv import load_dotenv
 import asyncio
 
-load_dotenv()
+# Your credentials
+API_ID = 29140356
+API_HASH = "f5976eb15ac17891076075f76a9c312b"
+SESSION = "1BVtsOJwBu1YysL2z1emSlrKzvUybF7uU6-VjgnQQVPUI53D-acAfsjaVCOhtcq26eoUESAUQ5XXSeAUJn6iR9OS93fC77DRysJOYy45CSSp3Y_m-pSf-kZ4Ueps7WfZouywJK0D8hXC7XgJDAYW0pkIJinKqDZ-n83VMm9H2diPEO-kAZ3FfUuDStN5xJSuakrzRC_XIi18nrYVI_oO5LJONRlC07V0RorPyuTdsw9G8TfPVUu0TwVU7kC2yyj-ZF6imqaktmzSScoen9npNMBZWn9C93G0cDeI1U1_KjP0fEeUeyQPFzg4KEhhP0uLHIHj7-duQObdPgFapN7QYiONCgIScRkM="
 
-API_ID = int(os.getenv("API_ID"))
-API_HASH = os.getenv("API_HASH")
-SESSION = os.getenv("SESSION")  # This is your string session
-
-ADMINS = [123456789]  # 👈 Replace with your Telegram user ID
+# Add your Telegram user ID here to restrict commands
+ADMINS = [123456789]  # 🔒 Replace with your real Telegram user ID
 
 client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
 
+# Set to keep track of allowed groups
 TARGET_GROUPS = set()
 AUTO_REPLY_MSG = "SEARCH YOUR MOVIE HERE @Yourmovielinkk"
 
@@ -21,7 +20,7 @@ AUTO_REPLY_MSG = "SEARCH YOUR MOVIE HERE @Yourmovielinkk"
 async def handler(event):
     if event.chat_id in TARGET_GROUPS and event.sender_id != (await client.get_me()).id:
         sent_msg = await event.reply(AUTO_REPLY_MSG)
-        await asyncio.sleep(15)  # Delete after 15 seconds
+        await asyncio.sleep(15)
         await sent_msg.delete()
 
 @client.on(events.NewMessage(pattern="/add"))
