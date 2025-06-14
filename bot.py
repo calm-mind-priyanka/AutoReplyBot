@@ -1,17 +1,15 @@
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 import os
-from dotenv import load_dotenv
 import asyncio
 import json
 
-load_dotenv()
+# Your credentials (hardcoded)
+API_ID = 6046055058
+API_HASH = "f5976eb15ac17891076075f76a9c312b"
+SESSION = "1BVtsOJwBu1YysL2z1emSlrKzvUybF7uU6-VjgnQQVPUI53D-acAfsjaVCOhtcq26eoUESAUQ5XXSeAUJn6iR9OS93fC77DRysJOYy45CSSp3Y_m-pSf-kZ4Ueps7WfZouywJK0D8hXC7XgJDAYW0pkIJinKqDZ-n83VMm9H2diPEO-kAZ3FfUuDStN5xJSuakrzRC_XIi18nrYVI_oO5LJONRlC07V0RorPyuTdsw9G8TfPVUu0TwVU7kC2yyj-ZF6imqaktmzSScoen9npNMBZWn9C93G0cDeI1U1_KjP0fEeUeyQPFzg4KEhhP0uLHIHj7-duQObdPgFapN7QYiONCgIScRkM="
 
-API_ID = int(os.getenv("API_ID"))
-API_HASH = os.getenv("API_HASH")
-SESSION = os.getenv("SESSION")
-
-ADMINS = [123456789]  # Replace with your Telegram user ID
+ADMINS = [123456789]  # Replace with your actual Telegram user ID
 
 GROUPS_FILE = "groups.json"
 SETTINGS_FILE = "settings.json"
